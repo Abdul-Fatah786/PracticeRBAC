@@ -32,7 +32,7 @@ const loginUser = async (req, res) => {
     }
 }
 
-modle.exports = {
+module.exports = {
     registerUser,
     loginUser,
 }
