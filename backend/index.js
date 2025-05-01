@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the backend API!' });
 });
 
+const Port = process.env.PORT || 3001;
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api', protectedRoutes);
@@ -25,4 +26,4 @@ mongoose.connect(process.env.MONGO_URI)
         console.log('MongoDB connected');
     })
     .catch(err => console.error('Connection error:', err));
-app.listen(3001, () => console.log('Server running on port 3001'));
+app.listen(Port, () => console.log('Server running on port 3001'));
