@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
-const authRoutes = require('./src/routes/AuthRoutes.js');
-const protectedRoutes = require('./src/routes/protected.js');
+const authRoutes = require('../src/routes/AuthRoutes.js');
+const protectedRoutes = require('../src/routes/protected.js');
 
 const app = express();
 app.use(cors());
@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the backend API!' });
 });
 
-const Port = process.env.PORT || 3001;
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api', protectedRoutes);
@@ -26,4 +25,5 @@ mongoose.connect(process.env.MONGO_URI)
         console.log('MongoDB connected');
     })
     .catch(err => console.error('Connection error:', err));
-app.listen(Port, () => console.log('Server running on port 3001'));
+
+module.exports = app;
