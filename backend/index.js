@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
-const authRoutes = require('../src/routes/AuthRoutes.js');
-const protectedRoutes = require('../src/routes/protected.js');
+const authRoutes = require('./src/routes/authRoutes.js');
+const protectedRoutes = require('./src/routes/protected.js');
 
 const app = express();
 app.use(cors());
@@ -26,4 +26,6 @@ mongoose.connect(process.env.MONGO_URI)
     })
     .catch(err => console.error('Connection error:', err));
 
-module.exports = app;
+app.listen(process.env.PORT || 3001, () => {
+    console.log(`Server is running on port ${process.env.PORT || 5000}`);
+})
