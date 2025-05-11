@@ -22,7 +22,7 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(`${BASE_URL}/api/auth/login`, formData);
+      const response = await axios.post(`${BASE_URL}api/auth/login`, formData);
       localStorage.setItem('token', response.data.token);
       navigate('/dashboard');
     } catch (error) {

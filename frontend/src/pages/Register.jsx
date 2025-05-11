@@ -24,7 +24,7 @@ const Register = () => {
         setIsLoading(true);
 
         try {
-            await axios.post(`${BASE_URL}/api/auth/register`, formData);
+            await axios.post(`${BASE_URL}api/auth/register`, formData);
             navigate('/login');
         } catch (error) {
             console.error(error);
