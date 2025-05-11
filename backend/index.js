@@ -7,7 +7,12 @@ const authRoutes = require('./src/routes/authRoutes.js');
 const protectedRoutes = require('./src/routes/protected.js');
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+    origin: '*',
+    credentials: true // if you're using cookies/auth headers
+}));
+
 app.use(express.json());
 
 // Health check route

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 const Register = () => {
-    const [formData, setFormData] = useState({ 
-        username: '', 
-        email: '', 
-        password: '' 
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: ''
     });
     const navigate = useNavigate();
     const [error, setError] = useState('');
@@ -21,9 +22,9 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        
+
         try {
-            await axios.post('http://localhost:3001/api/auth/register', formData);
+            await axios.post(`${BASE_URL}/api/auth/register`, formData);
             navigate('/login');
         } catch (error) {
             console.error(error);
@@ -128,8 +129,8 @@ const Register = () => {
                                 <button
                                     type="submit"
                                     disabled={isLoading}
-                                    className={`w-full py-3 px-4 rounded-lg text-white font-medium shadow-md transition duration-300 ${isLoading 
-                                        ? 'bg-blue-400 cursor-not-allowed' 
+                                    className={`w-full py-3 px-4 rounded-lg text-white font-medium shadow-md transition duration-300 ${isLoading
+                                        ? 'bg-blue-400 cursor-not-allowed'
                                         : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg transform hover:-translate-y-1'}`}
                                 >
                                     {isLoading ? (
@@ -150,8 +151,8 @@ const Register = () => {
                         <div className="mt-6 text-center">
                             <p className="text-sm text-gray-600">
                                 Already have an account?{' '}
-                                <Link 
-                                    to="/login" 
+                                <Link
+                                    to="/login"
                                     className="font-medium text-blue-600 hover:text-blue-500 transition"
                                 >
                                     Sign in here
